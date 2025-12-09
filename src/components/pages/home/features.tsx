@@ -141,16 +141,17 @@ export const Features: React.FC = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feature, index) => (
-            <FeatureCard 
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              delay={feature.delay}
-              gradient={feature.gradient}
-              bgGradient={feature.bgGradient}
-              className="md:col-span-1"
-            />
+            <div key={index}>
+              <FeatureCard 
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                delay={feature.delay}
+                gradient={feature.gradient}
+                bgGradient={feature.bgGradient}
+                className="md:col-span-1"
+              />
+            </div>
           ))}
         </div>
       </div>

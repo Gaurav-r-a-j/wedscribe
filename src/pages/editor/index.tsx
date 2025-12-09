@@ -47,10 +47,14 @@ export const EditorPage: React.FC = () => {
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      useProfileStore.getState().updateSection('personal', 'photoUrl', url);
-    }
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const dataUrl = reader.result as string;
+      useProfileStore.getState().updateSection('personal', 'photoUrl', dataUrl);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleGenerateBio = async () => {
