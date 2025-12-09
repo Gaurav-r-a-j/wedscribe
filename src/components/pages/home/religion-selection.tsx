@@ -1,78 +1,56 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
 
-interface ReligionCardProps {
-  name: string;
-  selected?: boolean;
-  onClick: () => void;
-}
+const religions = [
+  { name: 'Hindu', color: 'bg-orange-100 text-orange-700 border-orange-200' },
+  { name: 'Muslim', color: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
+  { name: 'Sikh', color: 'bg-amber-100 text-amber-700 border-amber-200' },
+  { name: 'Christian', color: 'bg-blue-100 text-blue-700 border-blue-200' },
+  { name: 'Jain', color: 'bg-yellow-100 text-yellow-700 border-yellow-200' },
+  { name: 'Buddhist', color: 'bg-rose-100 text-rose-700 border-rose-200' },
+];
 
-const ReligionCard: React.FC<ReligionCardProps> = ({ name, selected, onClick }) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="h-full"
-  >
-    <Card 
-      onClick={onClick}
-      className={cn(
-        "relative h-full cursor-pointer transition-all duration-300 border-2 hover:shadow-md",
-        selected 
-          ? "border-primary shadow-lg ring-2 ring-primary/20" 
-          : "border-border hover:border-primary/50"
-      )}
-    >
-      <CardContent className="flex flex-col items-center justify-center p-6 h-full aspect-[1.5/1]">
-        <span className={cn(
-          "text-lg font-bold mb-1 transition-colors",
-          selected ? "text-primary" : "text-foreground"
-        )}>
-          {name}
-        </span>
-        <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Biodata</span>
-      </CardContent>
-    </Card>
-  </motion.div>
-);
-
-interface ReligionSelectionProps {
-  onSelect?: (religion: string) => void;
-}
-
-export const ReligionSelection: React.FC<ReligionSelectionProps> = ({ onSelect }) => {
-  const religions = [
-    "Hindu", "Muslim", "Christian", "Sikh", "Buddhist", "Jain"
-  ];
-
+export const ReligionSelection: React.FC = () => {
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold font-serif text-foreground mb-4">Select Your Community</h2>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full mb-4"></div>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            We have specialized formats tailored for every community's unique traditions.
-          </p>
-        </div>
+    <section className="py-32 bg-white relative">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        <motion.div 
+           initial={{ opacity: 0, scale: 0.95 }}
+           whileInView={{ opacity: 1, scale: 1 }}
+           viewport={{ once: true }}
+           transition={{ duration: 0.5 }}
+        >
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">
+                Tailored for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Traditions</span>
+            </h2>
+            <p className="text-lg text-slate-500 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+                Whether you prefer a traditional format or a modern layout, our templates adapt to the nuances of your community's requirements.
+            </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {religions.map((religion, index) => (
-            <motion.div
-              key={religion}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <ReligionCard 
-                name={religion} 
-                onClick={() => onSelect?.(religion)} 
-              />
-            </motion.div>
-          ))}
-        </div>
+            <div className="flex flex-wrap justify-center gap-4">
+                {religions.map((rel, index) => (
+                    <motion.div
+                        key={rel.name}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className={`px-8 py-3 rounded-full border ${rel.color} font-medium text-sm cursor-default hover:scale-105 transition-transform`}
+                    >
+                        {rel.name}
+                    </motion.div>
+                ))}
+                <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="px-8 py-3 rounded-full border border-slate-200 text-slate-500 font-medium text-sm bg-slate-50"
+                >
+                    + Your Community
+                </motion.div>
+            </div>
+        </motion.div>
       </div>
     </section>
   );

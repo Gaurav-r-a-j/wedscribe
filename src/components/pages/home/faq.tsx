@@ -6,60 +6,58 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { motion } from 'motion/react';
+import { HelpCircle } from 'lucide-react';
 
 export const FAQ: React.FC = () => {
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold font-serif text-foreground mb-4"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-muted-foreground"
-          >
-            Everything you need to know about creating your biodata.
-          </motion.p>
+    <section className="py-32 bg-white relative">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-20">
+            <div className="inline-flex items-center justify-center p-3 rounded-full bg-slate-100 text-slate-500 mb-6">
+                <HelpCircle size={24} />
+            </div>
+            <motion.h2 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-4xl font-bold font-serif text-slate-900 mb-4"
+            >
+                Common Questions
+            </motion.h2>
+            <p className="text-slate-500 font-light text-lg">Everything you need to know before you start.</p>
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
         >
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Is my data private?</AccordionTrigger>
-              <AccordionContent>
-                Yes, absolutely. WedScribe runs entirely in your browser. Your personal information is never sent to our servers. It stays on your device until you choose to download your biodata.
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            <AccordionItem value="item-1" className="border border-slate-200 rounded-lg px-6 bg-white data-[state=open]:border-primary/50 data-[state=open]:ring-4 data-[state=open]:ring-primary/5 transition-all">
+              <AccordionTrigger className="hover:no-underline text-lg font-medium text-slate-700 py-6">
+                  Is my personal data safe?
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-500 leading-relaxed pb-6 text-base font-light">
+                Absolutely. WedScribe operates on a <span className="text-slate-900 font-medium">Local-First</span> architecture. This means your data is processed entirely within your browser and never sent to any external server. It stays on your device until you decide to share the final PDF.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Can I edit my biodata later?</AccordionTrigger>
-              <AccordionContent>
-                Since we don't store your data, you cannot "log in" to edit later. However, you can save your progress as a JSON file and re-upload it to continue editing anytime.
+            
+            <AccordionItem value="item-2" className="border border-slate-200 rounded-lg px-6 bg-white data-[state=open]:border-primary/50 data-[state=open]:ring-4 data-[state=open]:ring-primary/5 transition-all">
+              <AccordionTrigger className="hover:no-underline text-lg font-medium text-slate-700 py-6">
+                  Is it free to download the PDF?
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-500 leading-relaxed pb-6 text-base font-light">
+                Yes, the core biodata creation and standard PDF downloads are completely free. We believe in making this essential step of matchmaking accessible to everyone.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Is it really free?</AccordionTrigger>
-              <AccordionContent>
-                Yes! You can create and download standard biodatas for free. We may offer premium templates or features in the future, but the core functionality will always remain accessible.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>What format is the download?</AccordionTrigger>
-              <AccordionContent>
-                You get a high-quality A4 PDF file, perfect for sharing via WhatsApp, Email, or printing.
+
+            <AccordionItem value="item-3" className="border border-slate-200 rounded-lg px-6 bg-white data-[state=open]:border-primary/50 data-[state=open]:ring-4 data-[state=open]:ring-primary/5 transition-all">
+              <AccordionTrigger className="hover:no-underline text-lg font-medium text-slate-700 py-6">
+                  Can I edit my biodata after downloading?
+              </AccordionTrigger>
+              <AccordionContent className="text-slate-500 leading-relaxed pb-6 text-base font-light">
+                Since we don't store your data on servers, you can't log back in to edit. However, you can use the "Save Progress" feature to download a small file that you can re-upload later to continue exactly where you left off.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

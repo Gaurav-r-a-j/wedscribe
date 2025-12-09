@@ -7,15 +7,11 @@ import { AISection } from '../../components/pages/home/ai-section';
 import { FAQ } from '../../components/pages/home/faq';
 import { Footer } from '../../components/pages/home/footer';
 
-interface Props {
-  onStart: () => void;
-}
-
-export const LandingPage: React.FC<Props> = ({ onStart }) => {
+export const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20 selection:text-primary">
-      <Navbar onStart={onStart} />
-      <Hero onStart={onStart} />
+      <Navbar />
+      <Hero />
       <Features />
       <ReligionSelection />
       <AISection />

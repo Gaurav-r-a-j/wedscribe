@@ -1,72 +1,100 @@
 import React from 'react';
-import { Zap, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { Sparkles, Wand2, Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 export const AISection: React.FC = () => {
-  return (
-    <section className="py-24 bg-secondary text-secondary-foreground relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
-      
-      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <motion.div 
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center justify-center w-16 h-16 bg-background/10 rounded-full mb-8 backdrop-blur-sm border border-background/20"
-          >
-              <Zap size={32} className="text-primary-foreground" fill="currentColor" />
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold font-serif mb-6 leading-tight"
-          >
-            Struggling with words?
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-secondary-foreground/80 mb-10 max-w-2xl mx-auto font-light"
-          >
-              Our integrated AI writing assistant helps you craft a humble yet impressive professional summary based on your career and values.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="relative max-w-2xl mx-auto"
-          >
-            <Card className="bg-card text-card-foreground border-none shadow-2xl overflow-visible">
-              <div className="absolute -top-3 -right-3 z-10">
-                <Badge className="bg-primary hover:bg-primary/90 text-primary-foreground border-none text-xs font-bold px-3 py-1 uppercase tracking-wider">
-                  AI Generated
-                </Badge>
-              </div>
-              <CardContent className="p-8 text-left">
-                <p className="font-serif italic text-lg leading-relaxed text-muted-foreground">
-                    "<span className="text-primary font-bold">I am a grounded and ambitious individual</span> who values family traditions while embracing modern progressive thinking. With a Master's in Computer Science and a passion for travel, I seek a partner who is intellectual, kind-hearted, and ready to share a journey of mutual growth."
-                </p>
-                <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                     <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                        <Sparkles size={14} className="text-primary" />
-                     </div>
-                     <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Generative AI Preview</span>
+    const navigate = useNavigate();
+
+    return (
+        <section className="py-32 bg-slate-900 relative overflow-hidden text-white">
+            {/* Background Gradients */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    {/* Left: Text Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest text-purple-300 mb-6 backdrop-blur-md">
+                            <Sparkles size={12} className="text-purple-400" /> AI Powered
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-bold font-serif mb-6 leading-tight">
+                            Writer's Block? <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Not Anymore.</span>
+                        </h2>
+                        <p className="text-lg text-slate-300 mb-8 font-light leading-relaxed max-w-lg">
+                            Let our advanced AI craft the perfect bio for you. Just enter your basic details and let the magic happen.
+                        </p>
+                        
+                        <div className="space-y-4 mb-10">
+                            {[
+                                "Professional Tone Adjustment",
+                                "Grammar & Spell Check",
+                                "Keywords Optimization",
+                                "Instant Variations"
+                            ].map((feature, i) => (
+                                <div key={i} className="flex items-center gap-3 text-slate-300">
+                                    <div className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                        <Check size={12} strokeWidth={3} />
+                                    </div>
+                                    <span>{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <Button onClick={() => navigate('/editor')} size="lg" className="rounded-full px-8 h-12 bg-white text-slate-900 hover:bg-slate-100 font-semibold text-base">
+                            Try AI Writer <Wand2 size={16} className="ml-2" /> 
+                        </Button>
+                    </motion.div>
+
+                    {/* Right: Visual Card */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                         whileInView={{ opacity: 1, scale: 1 }}
+                         viewport={{ once: true }}
+                         transition={{ duration: 0.8, delay: 0.2 }}
+                         className="relative"
+                    >
+                         {/* Abstract card looking like a chat or editor interface */}
+                        <div className="bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+                             {/* Mock UI Header */}
+                             <div className="flex items-center gap-2 mb-6 border-b border-slate-700 pb-4">
+                                 <div className="flex gap-1.5">
+                                     <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                                     <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                                     <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                                 </div>
+                                 <div className="ml-auto text-xs text-slate-500 font-mono">AI_Draft_v2.txt</div>
+                             </div>
+
+                             {/* Mock Content */}
+                             <div className="space-y-4 font-mono text-sm leading-relaxed">
+                                 <div className="text-slate-400">// Prompt</div>
+                                 <div className="bg-slate-900/50 p-3 rounded text-purple-300 border border-purple-500/20">
+                                     "Write a professional summary for a software engineer looking for a partner who values family."
+                                 </div>
+                                 
+                                 <div className="text-slate-400 mt-6">// Result</div>
+                                 <div className="text-slate-200 typing-effect">
+                                     "Ambitious Software Engineer with a passion for innovation. I value deep family connections and am seeking a partner who shares similar traditional values while embracing modern aspirations..."
+                                     <span className="w-2 h-4 bg-purple-400 inline-block align-middle ml-1 animate-pulse" />
+                                 </div>
+                             </div>
+
+                             {/* Decorative Glow */}
+                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-tr from-purple-500/10 via-transparent to-transparent pointer-events-none" />
+                        </div>
+                    </motion.div>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };

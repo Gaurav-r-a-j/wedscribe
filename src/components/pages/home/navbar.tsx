@@ -1,5 +1,7 @@
 import React from 'react';
-import { Heart, ArrowRight, Menu } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight, Menu } from 'lucide-react';
+import { Logo } from '@/components/ui/logo';
 import { Button } from '@/components/ui/button';
 import { motion } from 'motion/react';
 import {
@@ -17,26 +19,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-interface NavbarProps {
-  onStart: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onStart }) => {
+export const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const handleStart = () => navigate('/editor');
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border transition-all"
+      className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl transition-all"
     >
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="text-primary">
-            <Heart size={28} fill="currentColor" className="drop-shadow-sm" />
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground tracking-tight leading-none font-serif">WedScribe</h1>
-          </div>
+          <Logo />
         </div>
 
         {/* Desktop Navigation */}
@@ -62,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStart }) => {
           </NavigationMenu>
           
           <Button 
-            onClick={onStart}
+            onClick={handleStart}
             size="sm"
             className="gap-2 group ml-4"
           >
@@ -86,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onStart }) => {
                 <a href="#features" className="text-lg font-medium hover:text-primary transition-colors">Features</a>
                 <a href="#templates" className="text-lg font-medium hover:text-primary transition-colors">Templates</a>
                 <a href="#faq" className="text-lg font-medium hover:text-primary transition-colors">FAQ</a>
-                <Button onClick={onStart} className="w-full mt-4">
+                <Button onClick={handleStart} className="w-full mt-4">
                   Create Now
                 </Button>
               </div>

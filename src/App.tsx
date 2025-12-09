@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import { LandingPage } from './pages/home';
 import { EditorPage } from './pages/editor';
 
 const App = () => {
-  const [view, setView] = useState<'landing' | 'editor'>('landing');
-
-  if (view === 'landing') {
-    return <LandingPage onStart={() => setView('editor')} />;
-  }
-
-  return <EditorPage onBack={() => setView('landing')} />;
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/editor" element={<EditorPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
+  );
 };
 
 export default App;

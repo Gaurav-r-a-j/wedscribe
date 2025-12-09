@@ -39,8 +39,8 @@
   --sidebar-accent-foreground: oklch(0.6379 0.2527 351.3302);
   --sidebar-border: oklch(0.9213 0.0160 341.4136);
   --sidebar-ring: oklch(0.6407 0.2555 350.2393);
-  --font-sans: Open Sans, sans-serif;
-  --font-serif: Georgia, serif;
+  --font-sans: "Outfit", sans-serif;
+  --font-serif: "Montserrat", sans-serif;
   --font-mono: Menlo, monospace;
   --radius: 1.3rem;
   --shadow-x: 0px;

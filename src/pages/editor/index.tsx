@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { INITIAL_PROFILE, BiodataProfile, TemplateType } from '../../types';
 import { TemplateRenderer } from '../../components/common/TemplateRenderer';
 import { generateProfessionalBio } from '../../services/geminiService';
@@ -9,11 +10,9 @@ import { MobileNav } from '../../components/pages/editor/mobile-nav';
 import { EditorContent } from '../../components/pages/editor/editor-content';
 import { Heart } from 'lucide-react';
 
-interface EditorPageProps {
-  onBack: () => void;
-}
-
-export const EditorPage: React.FC<EditorPageProps> = ({ onBack }) => {
+export const EditorPage: React.FC = () => {
+  const navigate = useNavigate();
+  const handleBack = () => navigate('/');
   const [profile, setProfile] = useState<BiodataProfile>(INITIAL_PROFILE);
   const [activeTemplate, setActiveTemplate] = useState<TemplateType>(TemplateType.SKY_BLOSSOM);
   const [isGeneratingBio, setIsGeneratingBio] = useState(false);
@@ -130,7 +129,7 @@ export const EditorPage: React.FC<EditorPageProps> = ({ onBack }) => {
   return (
     <div className="h-screen bg-slate-50 flex flex-col font-sans overflow-hidden text-slate-800">
       
-      <Header onBack={onBack} onReset={resetData} onPrint={handlePrint} />
+      <Header onBack={handleBack} onReset={resetData} onPrint={handlePrint} />
 
       <div className="flex flex-1 overflow-hidden relative">
         

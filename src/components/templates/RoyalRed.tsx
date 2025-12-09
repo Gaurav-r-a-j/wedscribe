@@ -1,0 +1,85 @@
+import React from 'react';
+import { BiodataProfile } from '@/types';
+import { PlaceholderImage } from './shared';
+
+interface Props {
+  profile: BiodataProfile;
+}
+
+export const RoyalRed: React.FC<Props> = ({ profile }) => {
+  const { personal, education, family, contact } = profile;
+
+  return (
+    <div className="w-full h-full bg-[#7f1d1d] p-6 flex items-center justify-center font-cormorant text-[#fff1f2]">
+      <div className="w-full h-full border-2 border-[#fcd34d] p-1.5 rounded-lg relative">
+           <div className="w-full h-full border border-[#fcd34d] rounded p-8 flex flex-col items-center relative overflow-hidden bg-[#991b1b]">
+              
+              {/* Ornamental Corners */}
+              <div className="absolute top-4 left-4 w-24 h-24 border-t-4 border-l-4 border-[#fcd34d] rounded-tl-3xl opacity-60"></div>
+              <div className="absolute top-4 right-4 w-24 h-24 border-t-4 border-r-4 border-[#fcd34d] rounded-tr-3xl opacity-60"></div>
+              <div className="absolute bottom-4 left-4 w-24 h-24 border-b-4 border-l-4 border-[#fcd34d] rounded-bl-3xl opacity-60"></div>
+              <div className="absolute bottom-4 right-4 w-24 h-24 border-b-4 border-r-4 border-[#fcd34d] rounded-br-3xl opacity-60"></div>
+
+              <div className="text-center z-10 mb-8 mt-4">
+                  <span className="text-[#fcd34d] uppercase tracking-[0.4em] text-xs">|| Shree Ganeshay Namah ||</span>
+                  <h1 className="font-great-vibes text-6xl mt-4 text-[#fcd34d] drop-shadow-md">{personal.fullName}</h1>
+              </div>
+
+              <div className="flex w-full gap-8 z-10 grow px-4">
+                  {/* Left Column (Details) */}
+                  <div className="w-1/2 flex flex-col items-end text-right gap-8 pt-4">
+                      <div>
+                           <h3 className="text-[#fcd34d] font-bold uppercase tracking-widest text-sm mb-3 border-b border-[#fcd34d]/30 pb-1 inline-block">Personal</h3>
+                           <div className="space-y-1">
+                              <p>{personal.dateOfBirth}</p>
+                              <p>{personal.height}</p>
+                              <p>{personal.religion}, {personal.caste}</p>
+                              <p>{personal.gothra}</p>
+                           </div>
+                      </div>
+                      <div>
+                           <h3 className="text-[#fcd34d] font-bold uppercase tracking-widest text-sm mb-3 border-b border-[#fcd34d]/30 pb-1 inline-block">Professional</h3>
+                           <div className="space-y-1">
+                              <p className="font-bold whitespace-pre-line">{education.education}</p>
+                              <p>{education.occupation}</p>
+                              <p>{education.company}</p>
+                           </div>
+                      </div>
+                      <div>
+                           <h3 className="text-[#fcd34d] font-bold uppercase tracking-widest text-sm mb-3 border-b border-[#fcd34d]/30 pb-1 inline-block">Family</h3>
+                           <div className="space-y-1">
+                              <p>Father: {family.fatherName}</p>
+                              <p>Mother: {family.motherName}</p>
+                              <p>{family.nativePlace}</p>
+                           </div>
+                      </div>
+                  </div>
+
+                  {/* Center Divider Area */}
+                  <div className="w-px h-full bg-gradient-to-b from-transparent via-[#fcd34d]/50 to-transparent self-center"></div>
+
+                  {/* Right Column (Photo & Contact) */}
+                  <div className="w-1/2 flex flex-col items-start gap-8 pt-4">
+                       <div className="w-40 h-52 border-2 border-[#fcd34d] p-1 shadow-2xl bg-[#7f1d1d]">
+                          {personal.photoUrl ? <img src={personal.photoUrl} className="w-full h-full object-cover" alt="Profile" /> : <PlaceholderImage className="w-full h-full" />}
+                       </div>
+
+                       <div>
+                           <h3 className="text-[#fcd34d] font-bold uppercase tracking-widest text-sm mb-3 border-b border-[#fcd34d]/30 pb-1 inline-block">Contact</h3>
+                           <div className="space-y-1 text-left">
+                              <p>{contact.contactNumber}</p>
+                              <p>{contact.email}</p>
+                              <p className="text-sm opacity-80 mt-2 max-w-[200px] whitespace-pre-line">{contact.address}</p>
+                           </div>
+                       </div>
+                  </div>
+              </div>
+              
+              <div className="mt-auto pt-8 z-10 text-center opacity-70 text-xs tracking-widest uppercase text-[#fcd34d] pb-4">
+                  Marriage Biodata
+              </div>
+           </div>
+      </div>
+    </div>
+  );
+};

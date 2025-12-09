@@ -1,0 +1,112 @@
+import React from 'react';
+import { BiodataProfile } from '@/types';
+import { Phone, Mail, MapPin, User, Star, Calendar, Clock, Ruler, Users, GraduationCap, Briefcase, Globe, Award } from 'lucide-react';
+import { PlaceholderImage, SectionTitle, DetailItem, ContactRow } from './shared';
+import { useLanguage } from '@/context/LanguageContext';
+
+interface Props {
+  profile: BiodataProfile;
+}
+
+export const SkyBlossom: React.FC<Props> = ({ profile }) => {
+  const { t } = useLanguage();
+  const { personal, education, family, contact } = profile;
+  
+  return (
+    <div className="w-full h-full bg-white flex flex-row font-lato overflow-hidden">
+      {/* Left Sidebar - 35% */}
+      <div className="w-[35%] bg-sky-900 text-white p-8 flex flex-col items-center text-center relative">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,_var(--tw-gradient-stops))] from-sky-800 to-sky-900 opacity-50"></div>
+          
+          <div className="relative z-10 w-full flex flex-col items-center h-full">
+              <div className="w-40 h-40 rounded-full border-4 border-sky-400/30 p-1 mb-6 mt-8 shrink-0">
+                  {personal.photoUrl ? (
+                      <img src={personal.photoUrl} className="w-full h-full rounded-full object-cover shadow-lg" alt="Profile" />
+                  ) : <PlaceholderImage className="w-full h-full rounded-full bg-sky-800 text-sky-400/50" />}
+              </div>
+
+              <div className="w-full space-y-8 grow flex flex-col justify-center">
+                  <div>
+                      <h2 className="text-2xl font-cinzel font-bold text-sky-100 mb-6 border-b border-sky-700 pb-4 w-full">{t('section.contact')}</h2>
+                      <div className="w-full space-y-4 text-left px-2">
+                          <ContactRow icon={Phone} value={contact.contactNumber} />
+                          <ContactRow icon={Mail} value={contact.email} />
+                          <ContactRow icon={MapPin} value={contact.address} />
+                      </div>
+                  </div>
+
+                  <div className="w-full text-left px-2">
+                      <h2 className="text-xl font-cinzel font-bold text-sky-100 mb-4 flex items-center gap-2">
+                          <Star size={18} className="text-sky-400"/> {t('section.habits')}
+                      </h2>
+                      <div className="space-y-3 text-sm text-sky-100/80">
+                          {personal.manglik === 'Yes' && <p>• {t('field.manglik')}</p>}
+                          <p>• {profile.family.familyValues} {t('field.values')}</p>
+                          <p>• {profile.family.familyType} {t('field.familyType')}</p>
+                          <p>• {personal.religion}, {personal.caste}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      {/* Right Content - 65% */}
+      <div className="w-[65%] p-10 flex flex-col">
+          <div className="mb-10 border-b-2 border-sky-100 pb-6">
+              <h1 className="text-5xl font-cinzel text-sky-900 mb-2 uppercase tracking-wide leading-tight">{personal.fullName}</h1>
+              <p className="text-lg tracking-[0.2em] text-sky-500 uppercase font-bold">{education.occupation}</p>
+          </div>
+
+          <div className="space-y-8 grow">
+              {/* About Section */}
+              {education.aboutMe && (
+                  <div className="bg-sky-50 p-5 border-l-4 border-sky-500 rounded-r-lg">
+                      <p className="italic text-slate-600 leading-relaxed text-sm whitespace-pre-line">"{education.aboutMe}"</p>
+                  </div>
+              )}
+
+              {/* Personal Grid */}
+              <div>
+                  <SectionTitle title={t('section.personal')} lineClass="bg-sky-100" />
+                  <div className="grid grid-cols-3 gap-6">
+                      <DetailItem label={t('field.dob')} value={`${personal.dateOfBirth}`} icon={Calendar} />
+                      <DetailItem label={t('field.tob')} value={personal.timeOfBirth} icon={Clock} />
+                      <DetailItem label={t('field.height')} value={personal.height} icon={Ruler} />
+                      <DetailItem label={t('field.religion')} value={personal.religion} icon={Star} />
+                      <DetailItem label={t('field.caste')} value={personal.caste} icon={Users} />
+                      <DetailItem label={t('field.gothra')} value={personal.gothra} icon={User} />
+                  </div>
+              </div>
+
+              {/* Professional Grid */}
+              <div>
+                  <SectionTitle title={t('section.education')} lineClass="bg-sky-100" />
+                  <div className="grid grid-cols-2 gap-6">
+                      <DetailItem label={t('field.education')} value={education.education} icon={GraduationCap} className="col-span-2" />
+                      <DetailItem label={t('field.occupation')} value={education.occupation} icon={Briefcase} />
+                      <DetailItem label={t('field.company')} value={education.company} icon={Globe} />
+                      <DetailItem label={t('field.income')} value={education.income} icon={Award} />
+                  </div>
+              </div>
+
+              {/* Family Grid */}
+              <div>
+                  <SectionTitle title={t('section.family')} lineClass="bg-sky-100" />
+                  <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+                      <DetailItem label={t('field.fatherName')} value={family.fatherName} valueClass="font-bold text-sky-900" />
+                      <DetailItem label="Occupation" value={family.fatherOccupation} />
+                      <DetailItem label={t('field.motherName')} value={family.motherName} valueClass="font-bold text-sky-900" />
+                      <DetailItem label="Occupation" value={family.motherOccupation} />
+                      <DetailItem label="Siblings" value={family.siblings} className="col-span-2 mt-2" />
+                  </div>
+              </div>
+          </div>
+          
+          {/* Footer */}
+          <div className="mt-auto pt-6 text-center text-xs text-sky-300 uppercase tracking-widest">
+              Biodata • {personal.fullName}
+          </div>
+      </div>
+    </div>
+  );
+};
