@@ -3,9 +3,7 @@ import { UserCircle, PenTool, GraduationCap, Users, Phone, Wand2 } from 'lucide-
 import { BiodataProfile } from '@/types';
 import { FormSection } from '@/components/common/FormSection';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/Input';
-import { Textarea } from '@/components/ui/Textarea';
-import { Select } from '@/components/ui/Select';
+import { FormInput, FormSelect, FormTextarea } from '@/components/forms';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useProfileStore } from '@/store/profileStore';
@@ -38,23 +36,44 @@ const InputGroup: React.FC<InputGroupProps> = React.memo(({
 }) => {
   const updateSection = useProfileStore((state) => state.updateSection);
   
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     updateSection(section, field, e.target.value);
   }, [section, field, updateSection]);
 
-  const commonProps = {
-    label,
-    value: value || '',
-    placeholder,
-    onChange: handleChange,
-  };
+  const handleSelectChange = useCallback((newValue: string) => {
+    updateSection(section, field, newValue);
+  }, [section, field, updateSection]);
 
   if (type === 'select') {
-    return <Select {...commonProps} options={options} />;
+    return (
+      <FormSelect
+        label={label}
+        value={value || ''}
+        onValueChange={handleSelectChange}
+        options={options}
+        placeholder={placeholder || 'Select...'}
+      />
+    );
   } else if (type === 'textarea') {
-    return <Textarea {...commonProps} className="h-24" />;
+    return (
+      <FormTextarea
+        label={label}
+        value={value || ''}
+        placeholder={placeholder}
+        onChange={handleChange}
+        className="h-24"
+      />
+    );
   } else {
-    return <Input {...commonProps} type={type} />;
+    return (
+      <FormInput
+        label={label}
+        type={type}
+        value={value || ''}
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
+    );
   }
 });
 
@@ -110,13 +129,42 @@ export const EditorContent: React.FC<EditorContentProps> = ({
                 <InputGroup label={t('field.tob')} value={profile.personal.timeOfBirth} section="personal" field="timeOfBirth" type="time" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                <InputGroup label={t('field.height')} value={profile.personal.height} section="personal" field="height" placeholder={t('placeholder.height')} />
+                <InputGroup 
+                    label={t('field.height')} 
+                    value={profile.personal.height} 
+                    section="personal" 
+                    field="height" 
+                    type="select"
+                    options={['5ft 0in', '5ft 1in', '5ft 2in', '5ft 3in', '5ft 4in', '5ft 5in', '5ft 6in', '5ft 7in', '5ft 8in', '5ft 9in', '5ft 10in', '5ft 11in', '6ft 0in', '6ft 1in', '6ft 2in', '6ft 3in', '6ft 4in', '6ft 5in', '6ft 6in']}
+                />
                 <InputGroup label={t('field.weight')} value={profile.personal.weight} section="personal" field="weight" placeholder={t('placeholder.weight')} />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                <InputGroup label={t('field.complexion')} value={profile.personal.complexion} section="personal" field="complexion" placeholder={t('placeholder.complexion')} />
-                <InputGroup label={t('field.bloodGroup')} value={profile.personal.bloodGroup} section="personal" field="bloodGroup" placeholder={t('placeholder.blood')} />
+                <InputGroup 
+                    label={t('field.complexion')} 
+                    value={profile.personal.complexion} 
+                    section="personal" 
+                    field="complexion" 
+                    type="select"
+                    options={['Fair', 'Wheatish Fair', 'Wheatish', 'Dark', 'Very Fair', 'Light Brown', 'Medium Brown', 'Dark Brown']}
+                />
+                <InputGroup 
+                    label={t('field.bloodGroup')} 
+                    value={profile.personal.bloodGroup} 
+                    section="personal" 
+                    field="bloodGroup" 
+                    type="select"
+                    options={['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']}
+                />
                 </div>
+                <InputGroup 
+                    label={t('field.maritalStatus')} 
+                    value={profile.personal.maritalStatus} 
+                    section="personal" 
+                    field="maritalStatus" 
+                    type="select"
+                    options={['Never Married', 'Divorced', 'Widowed', 'Separated']}
+                />
             </FormSection>
 
             <FormSection title={t('section.careerEdu')} icon={<GraduationCap size={18} />}>
@@ -141,7 +189,7 @@ export const EditorContent: React.FC<EditorContentProps> = ({
                             <Wand2 size={12} /> {isGeneratingBio ? t('label.writing') : t('label.aiEnhance')}
                         </Button>
                     </div>
-                    <Textarea
+                    <FormTextarea
                     value={profile.education.aboutMe}
                     onChange={handleAboutMeChange}
                     className="h-32 leading-relaxed"
@@ -153,14 +201,28 @@ export const EditorContent: React.FC<EditorContentProps> = ({
 
             <FormSection title={t('section.familyDetails')} icon={<Users size={18} />}>
                 <div className="grid grid-cols-2 gap-4">
-                <InputGroup label={t('field.religion')} value={profile.personal.religion} section="personal" field="religion" />
+                <InputGroup 
+                    label={t('field.religion')} 
+                    value={profile.personal.religion} 
+                    section="personal" 
+                    field="religion" 
+                    type="select"
+                    options={['Hindu', 'Muslim', 'Christian', 'Sikh', 'Jain', 'Buddhist', 'Parsi', 'Other']}
+                />
                 <InputGroup label={t('field.caste')} value={profile.personal.caste} section="personal" field="caste" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                 <InputGroup label={t('field.gothra')} value={profile.personal.gothra} section="personal" field="gothra" />
                 <InputGroup label={t('field.manglik')} value={profile.personal.manglik} section="personal" field="manglik" type="select" options={[t('option.no'), t('option.yes'), t('option.anshik'), t('option.dontKnow')]} />
                 </div>
-                <InputGroup label={t('field.rashi')} value={profile.personal.rashi} section="personal" field="rashi" />
+                <InputGroup 
+                    label={t('field.rashi')} 
+                    value={profile.personal.rashi} 
+                    section="personal" 
+                    field="rashi" 
+                    type="select"
+                    options={['Mesha (Aries)', 'Vrishabha (Taurus)', 'Mithuna (Gemini)', 'Karka (Cancer)', 'Simha (Leo)', 'Kanya (Virgo)', 'Tula (Libra)', 'Vrishchika (Scorpio)', 'Dhanu (Sagittarius)', 'Makara (Capricorn)', 'Kumbha (Aquarius)', 'Meena (Pisces)']}
+                />
                 
                 <div className="my-4 border-t border-slate-100"></div>
                 
@@ -169,6 +231,24 @@ export const EditorContent: React.FC<EditorContentProps> = ({
                 <InputGroup label={t('field.fatherOcc')} value={profile.family.fatherOccupation} section="family" field="fatherOccupation" />
                 <InputGroup label={t('field.motherName')} value={profile.family.motherName} section="family" field="motherName" />
                 <InputGroup label={t('field.motherOcc')} value={profile.family.motherOccupation} section="family" field="motherOccupation" />
+                <div className="grid grid-cols-2 gap-4">
+                    <InputGroup 
+                        label={t('field.familyType')} 
+                        value={profile.family.familyType} 
+                        section="family" 
+                        field="familyType" 
+                        type="select"
+                        options={['Nuclear Family', 'Joint Family', 'Extended Family']}
+                    />
+                    <InputGroup 
+                        label={t('field.values')} 
+                        value={profile.family.familyValues} 
+                        section="family" 
+                        field="familyValues" 
+                        type="select"
+                        options={['Orthodox', 'Moderate', 'Liberal', 'Very Liberal']}
+                    />
+                </div>
                 <InputGroup label={t('field.siblings')} value={profile.family.siblings} section="family" field="siblings" placeholder={t('placeholder.siblings')} type="textarea" />
                 <InputGroup label={t('field.nativePlace')} value={profile.family.nativePlace} section="family" field="nativePlace" />
                 </div>

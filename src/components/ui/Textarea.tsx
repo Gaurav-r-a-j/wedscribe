@@ -1,25 +1,22 @@
-import React from 'react';
+import * as React from "react"
 
-interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label?: string;
-  error?: string;
-}
+import { cn } from "@/lib/utils"
 
-export const Textarea: React.FC<TextareaProps> = ({ label, error, className = '', ...props }) => {
+const Textarea = React.forwardRef<
+  HTMLTextAreaElement,
+  React.ComponentProps<"textarea">
+>(({ className, ...props }, ref) => {
   return (
-    <div className="w-full">
-      {label && (
-        <label className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">
-          {label}
-        </label>
+    <textarea
+      className={cn(
+        "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        className
       )}
-      <textarea
-        className={`w-full px-3 py-2 bg-slate-50 border rounded text-sm text-slate-700 font-medium focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none ${
-          error ? 'border-red-500' : 'border-slate-200'
-        } ${className}`}
-        {...props}
-      />
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
-    </div>
-  );
-};
+      ref={ref}
+      {...props}
+    />
+  )
+})
+Textarea.displayName = "Textarea"
+
+export { Textarea }

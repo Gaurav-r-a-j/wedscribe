@@ -12,14 +12,14 @@ export const LandingPage: React.FC = () => {
     <>
       <Helmet>
         <title>WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata Online</title>
-        <meta name="description" content="Create professional, elegant biodata for Indian weddings with WedScribe. 30+ premium templates, AI-powered content generation, and instant PDF/PNG downloads. Free online biodata maker." />
+        <meta name="description" content="Create professional, elegant biodata for Indian weddings with WedScribe. 30+ premium templates, instant PDF/PNG downloads, and A4 print-ready layouts. Free online biodata maker." />
         <meta name="keywords" content="biodata maker, wedding biodata, matrimonial biodata, Indian wedding biodata, biodata generator, marriage biodata, biodata template, online biodata maker, biodata creator, shadi biodata" />
         <meta property="og:title" content="WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata" />
-        <meta property="og:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, AI-powered content generation, and instant downloads. Free online biodata maker." />
-        <meta property="og:url" content="https://studio.designbyte.dev" />
+        <meta property="og:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, instant downloads, and A4 print-ready layouts. Free online biodata maker." />
+        <meta property="og:url" content="https://wedscribe.designbyte.dev" />
         <meta name="twitter:title" content="WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata" />
-        <meta name="twitter:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, AI-powered content generation, and instant downloads." />
-        <link rel="canonical" href="https://studio.designbyte.dev" />
+        <meta name="twitter:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, instant downloads, and A4 print-ready layouts." />
+        <link rel="canonical" href="https://wedscribe.designbyte.dev" />
       </Helmet>
       <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20 selection:text-primary">
         <Navbar />
