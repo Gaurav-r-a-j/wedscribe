@@ -142,7 +142,6 @@ export const CanvasWorkspace: React.FC<Props> = ({ children }) => {
                     transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
                     transition: isDragging ? 'none' : 'transform 0.2s cubic-bezier(0.1, 0.7, 1.0, 0.1)',
                     width: '210mm', 
-                    minHeight: '297mm',
                     height: 'auto',
                     willChange: 'transform' // Hardware acceleration hint
                 }}

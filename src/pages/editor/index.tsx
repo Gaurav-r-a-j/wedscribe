@@ -32,18 +32,19 @@ export const EditorPage: React.FC = () => {
   const handleBack = () => navigate('/');
   const profile = useProfileStore((state) => state.profile);
   const updateSection = useProfileStore((state) => state.updateSection);
-  const [activeTemplate, setActiveTemplate] = useState<TemplateType>(TemplateType.SKY_BLOSSOM);
+  const activeTemplate = useProfileStore((state) => state.activeTemplate);
+  const setActiveTemplate = useProfileStore((state) => state.setActiveTemplate);
   const [isGeneratingBio, setIsGeneratingBio] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [showResetDialog, setShowResetDialog] = useState(false);
   const downloadTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   // Desktop Tab State (Sidebar)
-  const [desktopTab, setDesktopTab] = useState<'templates' | 'edit'>('templates');
+  const [desktopTab, setDesktopTab] = useState<'templates' | 'edit'>('edit');
   
   // Mobile Tab State (Bottom Nav)
   // 'designs' | 'edit' | 'preview'
-  const [mobileTab, setMobileTab] = useState<'designs' | 'edit' | 'preview'>('preview');
+  const [mobileTab, setMobileTab] = useState<'designs' | 'edit' | 'preview'>('edit');
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -83,9 +84,10 @@ export const EditorPage: React.FC = () => {
   };
 
   const handleDownload = async (type: 'png' | 'pdf') => {
-      const element = document.getElementById('canvas-container');
+      // Find the template content directly, not the canvas container
+      const element = document.getElementById('template-content');
       if (!element) {
-        toast.error("Canvas not found", {
+        toast.error("Template not found", {
           description: "Please refresh the page and try again."
         });
         return;
@@ -119,16 +121,15 @@ export const EditorPage: React.FC = () => {
           download(dataUrl, `biodata-${profile.personal.fullName || 'untitled'}.png`);
           toast.success("Image downloaded successfully!");
         } else if (type === 'pdf') {
-          // Use html2canvas with onclone to handle oklch colors
-          // The browser computes oklch to RGB, but html2canvas needs explicit RGB values
+          // Use html2canvas - browser already converts oklch to RGB for computed styles
           const canvas = await html2canvas(element, {
             scale: 2,
             useCORS: true,
             backgroundColor: '#ffffff',
             logging: false,
             allowTaint: false,
-            onclone: (clonedDoc, element) => {
-              // Inject CSS to override oklch CSS variables with RGB equivalents
+            onclone: (clonedDoc) => {
+              // Inject CSS to override oklch CSS variables with hex equivalents for better PDF rendering
               const style = clonedDoc.createElement('style');
               style.textContent = `
                 :root, :root * {
@@ -154,43 +155,6 @@ export const EditorPage: React.FC = () => {
                 }
               `;
               clonedDoc.head.insertBefore(style, clonedDoc.head.firstChild);
-              
-              // Force reflow to apply new styles
-              clonedDoc.body.offsetHeight;
-              
-              // Process all elements and apply computed RGB colors directly
-              const allElements = clonedDoc.querySelectorAll('*');
-              allElements.forEach((el) => {
-                const htmlEl = el as HTMLElement;
-                const originalEl = element.querySelector(
-                  Array.from(element.querySelectorAll('*')).findIndex(e => 
-                    e.tagName === htmlEl.tagName && 
-                    e.className === htmlEl.className
-                  ) !== -1 ? 
-                  `${htmlEl.tagName}.${htmlEl.className}` : 
-                  htmlEl.tagName
-                ) as HTMLElement;
-                
-                if (originalEl) {
-                  const computedStyle = window.getComputedStyle(originalEl);
-                  
-                  // Apply computed RGB colors directly (browser already converted oklch to RGB)
-                  const bgColor = computedStyle.backgroundColor;
-                  if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
-                    htmlEl.style.setProperty('background-color', bgColor, 'important');
-                  }
-                  
-                  const textColor = computedStyle.color;
-                  if (textColor && textColor !== 'rgba(0, 0, 0, 0)') {
-                    htmlEl.style.setProperty('color', textColor, 'important');
-                  }
-                  
-                  const borderColor = computedStyle.borderColor;
-                  if (borderColor && borderColor !== 'rgba(0, 0, 0, 0)' && borderColor !== 'transparent') {
-                    htmlEl.style.setProperty('border-color', borderColor, 'important');
-                  }
-                }
-              });
             }
           });
 
