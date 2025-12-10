@@ -20,7 +20,7 @@ export const RegalAnvika: React.FC<Props> = ({ profile }) => {
          {/* Left Side - 40% */}
          <div className="w-[38%] border-r border-[#d4af37]/30 p-5 flex flex-col bg-[#2a0a18] relative min-h-full shrink-0">
             {/* Mandala Background */}
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-[#d4af37] to-transparent"></div>
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle,#d4af37,transparent)]"></div>
             
             <div className="relative z-10 flex flex-col w-full h-full gap-3 min-h-0">
                 <div className="w-36 h-44 border-2 border-[#d4af37] p-2 mx-auto rotate-1 shadow-2xl bg-[#3d1024] shrink-0">

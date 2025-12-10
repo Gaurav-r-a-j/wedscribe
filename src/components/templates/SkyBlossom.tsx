@@ -15,19 +15,19 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
   return (
     <div className="w-full h-full bg-white flex flex-row font-lato overflow-hidden min-h-full">
       {/* Left Sidebar - 35% */}
-      <div className="w-[35%] bg-sky-900 text-white p-5 flex flex-col relative min-h-full">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,var(--tw-gradient-stops))] from-sky-800 to-sky-900 opacity-50"></div>
+      <div className="w-[35%] bg-[#0c4a6e] text-white p-5 flex flex-col relative min-h-full">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,#075985,#0c4a6e)] opacity-50"></div>
           
           <div className="relative z-10 w-full flex flex-col h-full gap-3 min-h-full">
-              <div className="w-28 h-28 rounded-full border-4 border-sky-400/30 p-1 mx-auto mb-2 shrink-0">
+              <div className="w-28 h-28 rounded-full border-4 border-[#38bdf8]/30 p-1 mx-auto mb-2 shrink-0">
                   {personal.photoUrl ? (
                       <img src={personal.photoUrl} className="w-full h-full rounded-full object-cover shadow-lg" alt="Profile" />
-                  ) : <PlaceholderImage className="w-full h-full rounded-full bg-sky-800 text-sky-400/50" />}
+                  ) : <PlaceholderImage className="w-full h-full rounded-full bg-[#075985] text-[#38bdf8]/50" />}
               </div>
 
               <div className="w-full space-y-2.5 grow flex flex-col">
                   <div>
-                      <h2 className="text-sm font-cinzel font-bold text-sky-100 mb-2 border-b border-sky-700 pb-1.5">{t('section.contact')}</h2>
+                      <h2 className="text-sm font-cinzel font-bold text-[#e0f2fe] mb-2 border-b border-[#0369a1] pb-1.5">{t('section.contact')}</h2>
                       <div className="w-full space-y-1.5 text-left text-xs">
                           <ContactRow icon={Phone} value={contact.contactNumber} />
                           <ContactRow icon={Mail} value={contact.email} />
@@ -36,10 +36,10 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
                   </div>
 
                   <div>
-                      <h2 className="text-sm font-cinzel font-bold text-sky-100 mb-2 border-b border-sky-700 pb-1.5 flex items-center gap-1.5">
-                          <Star size={14} className="text-sky-400"/> {t('section.astrology')}
+                      <h2 className="text-sm font-cinzel font-bold text-[#e0f2fe] mb-2 border-b border-[#0369a1] pb-1.5 flex items-center gap-1.5">
+                          <Star size={14} className="text-[#38bdf8]"/> {t('section.astrology')}
                       </h2>
-                      <div className="space-y-1 text-xs text-sky-100/80">
+                      <div className="space-y-1 text-xs text-[#e0f2fe]/80">
                           {personal.rashi && <p>• {t('field.rashi')}: {personal.rashi}</p>}
                           {personal.nakshatra && <p>• {t('field.nakshatra')}: {personal.nakshatra}</p>}
                           {personal.gothra && <p>• {t('field.gothra')}: {personal.gothra}</p>}
@@ -48,8 +48,8 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
                   </div>
 
                   <div>
-                      <h2 className="text-sm font-cinzel font-bold text-sky-100 mb-2 border-b border-sky-700 pb-1.5">{t('section.habits')}</h2>
-                      <div className="space-y-1 text-xs text-sky-100/80">
+                      <h2 className="text-sm font-cinzel font-bold text-[#e0f2fe] mb-2 border-b border-[#0369a1] pb-1.5">{t('section.habits')}</h2>
+                      <div className="space-y-1 text-xs text-[#e0f2fe]/80">
                           {personal.maritalStatus && <p>• {t('field.maritalStatus')}: {personal.maritalStatus}</p>}
                           {family.familyValues && <p>• {family.familyValues} {t('field.values')}</p>}
                           {family.familyType && <p>• {family.familyType} {t('field.familyType')}</p>}
@@ -58,8 +58,8 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
                   </div>
 
                   <div>
-                      <h2 className="text-sm font-cinzel font-bold text-sky-100 mb-2 border-b border-sky-700 pb-1.5">Quick Info</h2>
-                      <div className="space-y-1 text-xs text-sky-100/80">
+                      <h2 className="text-sm font-cinzel font-bold text-[#e0f2fe] mb-2 border-b border-[#0369a1] pb-1.5">Quick Info</h2>
+                      <div className="space-y-1 text-xs text-[#e0f2fe]/80">
                           {personal.height && <p>• {t('field.height')}: {personal.height}</p>}
                           {personal.weight && <p>• {t('field.weight')}: {personal.weight}</p>}
                           {personal.bloodGroup && <p>• {t('field.bloodGroup')}: {personal.bloodGroup}</p>}
@@ -72,22 +72,22 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
 
       {/* Right Content - 65% */}
       <div className="w-[65%] p-8 flex flex-col gap-6 min-h-full">
-          <div className="border-b-2 border-sky-100 pb-4 shrink-0">
-              <h1 className="text-4xl font-cinzel text-sky-900 mb-1 uppercase tracking-wide leading-tight">{personal.fullName}</h1>
-              <p className="text-base tracking-[0.18em] text-sky-500 uppercase font-bold">{education.occupation}</p>
+          <div className="border-b-2 border-[#e0f2fe] pb-4 shrink-0">
+              <h1 className="text-4xl font-cinzel text-[#0c4a6e] mb-1 uppercase tracking-wide leading-tight">{personal.fullName}</h1>
+              <p className="text-base tracking-[0.18em] text-[#0ea5e9] uppercase font-bold">{education.occupation}</p>
           </div>
 
           <div className="space-y-6 flex-1 min-h-0">
               {/* About Section */}
               {education.aboutMe && (
-                  <div className="bg-sky-50 p-4 border-l-4 border-sky-500 rounded-r-lg">
-                      <p className="italic text-slate-600 leading-relaxed text-sm whitespace-pre-line">"{education.aboutMe}"</p>
+                  <div className="bg-[#f0f9ff] p-4 border-l-4 border-[#0ea5e9] rounded-r-lg">
+                      <p className="italic text-[#475569] leading-relaxed text-sm whitespace-pre-line">"{education.aboutMe}"</p>
                   </div>
               )}
 
               {/* Personal Grid */}
               <div>
-                  <SectionTitle title={t('section.personal')} lineClass="bg-sky-100" />
+                  <SectionTitle title={t('section.personal')} lineClass="bg-[#e0f2fe]" />
                   <div className="grid grid-cols-3 gap-4 text-sm">
                       <DetailItem label={t('field.dob')} value={`${personal.dateOfBirth}`} icon={Calendar} />
                       <DetailItem label={t('field.tob')} value={personal.timeOfBirth} icon={Clock} />
@@ -100,7 +100,7 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
 
               {/* Professional Grid */}
               <div>
-                  <SectionTitle title={t('section.education')} lineClass="bg-sky-100" />
+                  <SectionTitle title={t('section.education')} lineClass="bg-[#e0f2fe]" />
                   <div className="grid grid-cols-2 gap-4 text-sm">
                       <DetailItem label={t('field.education')} value={education.education} icon={GraduationCap} className="col-span-2" />
                       <DetailItem label={t('field.occupation')} value={education.occupation} icon={Briefcase} />
@@ -111,11 +111,11 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
 
               {/* Family Grid */}
               <div>
-                  <SectionTitle title={t('section.family')} lineClass="bg-sky-100" />
+                  <SectionTitle title={t('section.family')} lineClass="bg-[#e0f2fe]" />
                   <div className="grid grid-cols-2 gap-y-3 gap-x-6 text-sm">
-                      <DetailItem label={t('field.fatherName')} value={family.fatherName} valueClass="font-bold text-sky-900" />
+                      <DetailItem label={t('field.fatherName')} value={family.fatherName} valueClass="font-bold text-[#0c4a6e]" />
                       <DetailItem label={t('field.fatherOcc')} value={family.fatherOccupation} />
-                      <DetailItem label={t('field.motherName')} value={family.motherName} valueClass="font-bold text-sky-900" />
+                      <DetailItem label={t('field.motherName')} value={family.motherName} valueClass="font-bold text-[#0c4a6e]" />
                       <DetailItem label={t('field.motherOcc')} value={family.motherOccupation} />
                       <DetailItem label={t('field.siblings')} value={family.siblings} className="col-span-2 mt-2" />
                       <DetailItem label={t('field.nativePlace')} value={family.nativePlace} className="col-span-2" icon={MapPin} />
@@ -124,7 +124,7 @@ export const SkyBlossom: React.FC<Props> = ({ profile }) => {
           </div>
           
           {/* Footer */}
-          <div className="mt-auto pt-4 pb-2 text-center text-xs text-sky-300 uppercase tracking-widest shrink-0">
+          <div className="mt-auto pt-4 pb-2 text-center text-xs text-[#7dd3fc] uppercase tracking-widest shrink-0">
               Biodata • {personal.fullName}
           </div>
       </div>
