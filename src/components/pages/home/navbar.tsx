@@ -18,6 +18,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
@@ -71,7 +72,9 @@ export const Navbar: React.FC = () => {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          
+
+          <LanguageSwitcher className="ml-2" triggerClassName="rounded-full" />
+
           <Button 
             asChild
             size="sm"
@@ -96,6 +99,7 @@ export const Navbar: React.FC = () => {
                 <SheetTitle className="font-serif text-2xl text-left">WedScribe</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 mt-8">
+                <LanguageSwitcher className="flex justify-end" triggerClassName="rounded-full w-full justify-between px-3" showLabel />
                 <a href="#features" className="text-lg font-medium hover:text-primary transition-colors border-b pb-2">{t('nav.features')}</a>
                 <a href="#templates" className="text-lg font-medium hover:text-primary transition-colors border-b pb-2">{t('nav.templates')}</a>
                 <a href="#faq" className="text-lg font-medium hover:text-primary transition-colors border-b pb-2">{t('nav.faq')}</a>
