@@ -25,11 +25,11 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
         }}
       />
 
-      <div className="relative h-full w-full px-10 py-12 flex flex-col items-center gap-8">
+      <div className="relative h-full w-full px-8 py-6 flex flex-col items-center gap-4">
         {/* Header */}
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-2 shrink-0">
           <h1 className="text-3xl font-bold tracking-[0.16em] text-amber-100 uppercase">{personal.fullName}</h1>
-          <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-amber-200 shadow-[0_16px_50px_-24px_rgba(0,0,0,0.7)] bg-[#0b221c]">
+          <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-amber-200 shadow-[0_16px_50px_-24px_rgba(0,0,0,0.7)] bg-[#0b221c]">
             {personal.photoUrl ? (
               <img src={personal.photoUrl} alt="Profile" className="w-full h-full object-cover" />
             ) : (
@@ -43,9 +43,9 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
 
         {/* About */}
         {education.aboutMe && (
-          <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-3xl p-6 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm">
-            <div className="flex justify-center mb-3">
-              <span className="px-4 py-2 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
+          <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-4 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm shrink-0">
+            <div className="flex justify-center mb-2">
+              <span className="px-3 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
                 {t('field.aboutMe')}
               </span>
             </div>
@@ -54,13 +54,13 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
         )}
 
         {/* Personal */}
-        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-3xl p-8 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-4">
+        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-5 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-3 shrink-0">
           <div className="flex justify-center">
-            <span className="px-4 py-2 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
+            <span className="px-3 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
               {t('section.personal')}
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-y-3 gap-x-10">
+          <div className="grid grid-cols-2 gap-y-2 gap-x-8">
             <span className={label}>{t('field.dob')}</span>
             <span className={value}>{personal.dateOfBirth}</span>
             <span className={label}>{t('field.tob')}</span>
@@ -81,13 +81,13 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
         </section>
 
         {/* Education */}
-        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-3xl p-8 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-4">
+        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-5 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-3 shrink-0">
           <div className="flex justify-center">
-            <span className="px-4 py-2 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
+            <span className="px-3 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
               {t('section.education')}
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-y-3 gap-x-10">
+          <div className="grid grid-cols-2 gap-y-2 gap-x-8">
             <span className={label}>{t('field.education')}</span>
             <span className={value}>{education.education}</span>
             <span className={label}>{t('field.occupation')}</span>
@@ -100,13 +100,13 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
         </section>
 
         {/* Family */}
-        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-3xl p-8 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-4">
+        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-5 shadow-[0_20px_60px_-28px_rgba(0,0,0,0.65)] backdrop-blur-sm space-y-3 shrink-0">
           <div className="flex justify-center">
-            <span className="px-4 py-2 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
+            <span className="px-3 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
               {t('section.family')}
             </span>
           </div>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-1.5 text-sm">
             <div className="flex gap-2">
               <span className={label}>{t('field.fatherName')}:</span>
               <span className={value}>
@@ -133,11 +133,11 @@ export const EmeraldCrescent: React.FC<Props> = ({ profile }) => {
         </section>
 
         {/* Contact */}
-        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-5 shadow-[0_18px_50px_-28px_rgba(0,0,0,0.6)] backdrop-blur-sm text-center space-y-2">
-          <span className="px-4 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
+        <section className="w-full max-w-4xl bg-[#12382f]/70 border border-amber-200/30 rounded-2xl p-4 shadow-[0_18px_50px_-28px_rgba(0,0,0,0.6)] backdrop-blur-sm text-center space-y-1.5 shrink-0">
+          <span className="px-3 py-1 rounded-full bg-amber-200 text-[#0f2f28] font-semibold text-xs tracking-[0.22em] uppercase">
             {t('section.contact')}
           </span>
-          <div className="text-sm text-emerald-50 space-y-1 leading-relaxed mt-1">
+          <div className="text-sm text-emerald-50 space-y-1 leading-relaxed">
             {contact.contactNumber && <div>{contact.contactNumber}</div>}
             {contact.email && <div>{contact.email}</div>}
             {contact.address && <div className="whitespace-pre-line">{contact.address}</div>}
