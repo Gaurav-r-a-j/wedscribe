@@ -13,16 +13,16 @@ export const Footer: React.FC = () => {
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] bg-primary/12 rounded-full blur-[150px] sm:blur-[200px] pointer-events-none animate-blob"></div>
       <div className="absolute bottom-0 right-1/4 w-[550px] h-[550px] sm:w-[750px] sm:h-[750px] bg-primary/8 rounded-full blur-[130px] sm:blur-[180px] pointer-events-none animate-blob animation-delay-2000"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] bg-primary/6 rounded-full blur-[120px] sm:blur-[170px] pointer-events-none animate-blob animation-delay-4000"></div>
-      
+
       {/* Gradient Mesh Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-transparent to-primary/3 pointer-events-none"></div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 mb-12 sm:mb-16">
-        
+
           {/* Brand Column - Larger */}
           <div className="sm:col-span-2 lg:col-span-2 space-y-5">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -31,12 +31,12 @@ export const Footer: React.FC = () => {
               <div className="relative bg-gradient-to-br from-primary/20 to-primary/10 p-4 sm:p-5 rounded-xl backdrop-blur-md border border-primary/30 shadow-xl shadow-primary/10 hover:shadow-primary/20 transition-all duration-300 hover:scale-[1.02] hover:border-primary/50 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10">
-                  <Logo textClassName="text-white drop-shadow-md" /> 
+                  <Logo textClassName="text-white drop-shadow-md" />
                 </div>
               </div>
             </motion.div>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -45,17 +45,17 @@ export const Footer: React.FC = () => {
             >
               {t('footer.brand.desc')}
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="flex gap-2.5 pt-1"
             >
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
+              <a
+                href="https://twitter.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-11 h-11 rounded-lg bg-slate-800/60 backdrop-blur-sm border border-primary/20 flex items-center justify-center text-slate-300 hover:text-primary transition-all hover:scale-110 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
                 aria-label="Twitter"
@@ -63,9 +63,9 @@ export const Footer: React.FC = () => {
                 <Twitter size={18} className="group-hover:scale-110 transition-transform" />
                 <div className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
+              <a
+                href="https://instagram.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-11 h-11 rounded-lg bg-slate-800/60 backdrop-blur-sm border border-primary/20 flex items-center justify-center text-slate-300 hover:text-primary transition-all hover:scale-110 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
                 aria-label="Instagram"
@@ -73,9 +73,9 @@ export const Footer: React.FC = () => {
                 <Instagram size={18} className="group-hover:scale-110 transition-transform" />
                 <div className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href="https://linkedin.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="group relative w-11 h-11 rounded-lg bg-slate-800/60 backdrop-blur-sm border border-primary/20 flex items-center justify-center text-slate-300 hover:text-primary transition-all hover:scale-110 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
                 aria-label="LinkedIn"
@@ -166,7 +166,7 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </motion.div>
-          
+
           {/* Contact Column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,8 +182,8 @@ export const Footer: React.FC = () => {
             </h3>
             <div className="space-y-3">
               <p className="text-slate-300 text-sm font-light leading-relaxed">Have questions? We're here to help.</p>
-              <a 
-                href="mailto:hello@designbyte.dev" 
+              <a
+                href="mailto:hello@designbyte.dev"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-all font-semibold text-sm group"
               >
                 hello@designbyte.dev
@@ -191,9 +191,9 @@ export const Footer: React.FC = () => {
               </a>
             </div>
           </motion.div>
-          
+
         </div>
-        
+
         {/* Built By Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -206,9 +206,9 @@ export const Footer: React.FC = () => {
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
               <div className="space-y-2">
                 <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Built with ❤️ by</p>
-                <a 
-                  href="https://designbyte.dev" 
-                  target="_blank" 
+                <a
+                  href="https://designbyte.dev"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-white font-bold text-base sm:text-lg hover:text-primary transition-all flex items-center gap-2 group"
                 >
@@ -217,10 +217,10 @@ export const Footer: React.FC = () => {
                 </a>
                 <p className="text-slate-400 text-xs font-light">Crafting beautiful digital experiences</p>
               </div>
-              
-              <a 
-                href="https://designbyte.dev" 
-                target="_blank" 
+
+              <a
+                href="https://designbyte.dev"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-lg bg-primary/20 border border-primary/30 text-primary hover:bg-primary/30 hover:border-primary/40 transition-all text-sm font-semibold whitespace-nowrap"
               >
@@ -229,7 +229,7 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </motion.div>
-        
+
         {/* Bottom Bar */}
         <motion.div
           initial={{ opacity: 0 }}
