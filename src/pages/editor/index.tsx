@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { motion } from 'motion/react';
+import { SEO } from '../../components/common/SEO';
 import { TemplateType } from '../../types';
 import { TemplateRenderer } from '../../components/common/TemplateRenderer';
 import { generateProfessionalBio } from '../../services/geminiService';
@@ -272,15 +273,12 @@ export const EditorPage: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Create Biodata - WedScribe Editor | Premium Biodata Maker</title>
-        <meta name="description" content="Create and customize your wedding biodata with WedScribe editor. Choose from 30+ premium templates, edit details, and download as PDF or PNG instantly." />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta property="og:title" content="Create Biodata - WedScribe Editor" />
-        <meta property="og:description" content="Create and customize your wedding biodata with WedScribe editor. Choose from 30+ premium templates and download instantly." />
-        <meta property="og:url" content="https://studio.designbyte.dev/editor" />
-        <link rel="canonical" href="https://studio.designbyte.dev/editor" />
-      </Helmet>
+      <SEO
+        title="Create Biodata - WedScribe Editor | Premium Biodata Maker"
+        description="Create and customize your wedding biodata with WedScribe editor. Choose from 30+ premium templates, edit details, and download as PDF or PNG instantly."
+        canonical="/editor"
+        noindex={true}
+      />
       <div className="h-screen bg-slate-50 flex flex-col font-sans overflow-hidden text-slate-800">
 
         <div className="no-print">

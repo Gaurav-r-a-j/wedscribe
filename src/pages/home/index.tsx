@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '../../components/common/SEO';
 import { Navbar } from '../../components/pages/home/navbar';
 import { Hero } from '../../components/pages/home/hero';
 import { Features } from '../../components/pages/home/features';
@@ -10,17 +10,11 @@ import { Footer } from '../../components/pages/home/footer';
 export const LandingPage: React.FC = () => {
   return (
     <>
-      <Helmet>
-        <title>WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata Online</title>
-        <meta name="description" content="Create professional, elegant biodata for Indian weddings with WedScribe. 30+ premium templates, instant PDF/PNG downloads, and A4 print-ready layouts. Free online biodata maker." />
-        <meta name="keywords" content="biodata maker, wedding biodata, matrimonial biodata, Indian wedding biodata, biodata generator, marriage biodata, biodata template, online biodata maker, biodata creator, shadi biodata" />
-        <meta property="og:title" content="WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata" />
-        <meta property="og:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, instant downloads, and A4 print-ready layouts. Free online biodata maker." />
-        <meta property="og:url" content="https://wedscribe.designbyte.dev" />
-        <meta name="twitter:title" content="WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata" />
-        <meta name="twitter:description" content="Create professional, elegant biodata for Indian weddings with 30+ premium templates, instant downloads, and A4 print-ready layouts." />
-        <link rel="canonical" href="https://wedscribe.designbyte.dev" />
-      </Helmet>
+      <SEO 
+        title="WedScribe - Premium Biodata Maker | Create Beautiful Indian Wedding Biodata Online"
+        description="Create professional, elegant biodata for Indian weddings with WedScribe. 30+ premium templates, instant PDF/PNG downloads, and A4 print-ready layouts. Free online biodata maker."
+        keywords="biodata maker, wedding biodata, matrimonial biodata, Indian wedding biodata, biodata generator, marriage biodata, biodata template, online biodata maker, biodata creator, shadi biodata"
+      />
       <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20 selection:text-primary">
         <Navbar />
         <Hero />
